@@ -1,0 +1,351 @@
+/* =========================================================
+   Botánica Internacional — estilos
+   Paleta inspirada en el ticket del sorteo: verde profundo + dorado
+   ========================================================= */
+
+:root{
+  --green-950:#0e2019;
+  --green-900:#123526;
+  --green-800:#1b5e3a;
+  --green-700:#227249;
+  --gold-500:#c9a227;
+  --gold-400:#e2c158;
+  --cream-50:#faf7ef;
+  --cream-100:#f3ecd9;
+  --ink-900:#1a1a16;
+  --ink-600:#4a4a42;
+
+  --font-display:'Cinzel', serif;
+  --font-body:'Nunito Sans', sans-serif;
+
+  --radius:14px;
+  --shadow-soft:0 10px 30px rgba(14,32,25,.12);
+  --shadow-lift:0 16px 40px rgba(14,32,25,.2);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--ink-900);
+  background:var(--cream-50);
+  line-height:1.6;
+}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+h1,h2,h3{font-family:var(--font-display);line-height:1.2;margin:0 0 .5em;}
+p{margin:0 0 1em;}
+
+.container{
+  width:100%;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:.8rem;
+  font-weight:700;
+  color:var(--gold-500);
+  margin-bottom:.5em;
+}
+.center{text-align:center;}
+.section-lead{max-width:640px;margin:0 auto 2.5rem;color:var(--ink-600);}
+.section-lead.center{margin-left:auto;margin-right:auto;}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5em;
+  padding:.85em 1.6em;
+  border-radius:999px;
+  font-weight:700;
+  font-size:.95rem;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  border:2px solid transparent;
+  cursor:pointer;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+  color:var(--green-950);
+  box-shadow:var(--shadow-soft);
+}
+.btn-gold:hover{box-shadow:var(--shadow-lift);}
+.btn-outline{
+  border-color:rgba(250,247,239,.5);
+  color:var(--cream-50);
+}
+.btn-outline:hover{background:rgba(250,247,239,.1);}
+.btn-whatsapp{
+  background:#25D366;
+  color:#fff;
+  padding:.6em 1.3em;
+  font-size:.9rem;
+}
+.btn-lg{padding:1em 2.2em;font-size:1.05rem;}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(250,247,239,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(27,94,58,.12);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 24px;
+  gap:16px;
+}
+.logo{display:flex;align-items:center;gap:.5em;font-family:var(--font-display);font-size:1.15rem;color:var(--green-900);}
+.logo-icon{font-size:1.4rem;}
+.logo-text strong{color:var(--gold-500);}
+
+.nav{display:flex;gap:1.8rem;}
+.nav a{
+  font-weight:600;
+  color:var(--green-900);
+  position:relative;
+  padding:4px 0;
+}
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-2px;
+  width:0;height:2px;
+  background:var(--gold-500);
+  transition:width .2s ease;
+}
+.nav a:hover::after{width:100%;}
+
+.header-cta{white-space:nowrap;}
+
+.hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:38px;height:38px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+.hamburger span{
+  display:block;
+  height:2px;
+  background:var(--green-900);
+  border-radius:2px;
+  transition:transform .2s ease, opacity .2s ease;
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  background:radial-gradient(120% 120% at 20% 0%, var(--green-700), var(--green-950) 70%);
+  color:var(--cream-50);
+  padding:120px 0 90px;
+  overflow:hidden;
+  text-align:center;
+}
+.hero-pattern{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(201,162,39,.18) 0, transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(201,162,39,.14) 0, transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(201,162,39,.12) 0, transparent 45%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;max-width:760px;}
+.hero h1{
+  font-size:clamp(2.4rem, 5vw, 3.6rem);
+  color:var(--cream-50);
+  text-shadow:0 4px 20px rgba(0,0,0,.25);
+}
+.hero-sub{
+  font-size:1.1rem;
+  color:rgba(250,247,239,.85);
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.hero-actions{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:2rem 0 1.5rem;
+}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.5em;
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:var(--gold-400);
+}
+.dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#4ade80;
+  box-shadow:0 0 0 4px rgba(74,222,128,.25);
+}
+
+/* ---------- Sections ---------- */
+.section{padding:88px 0;}
+.section-alt{background:var(--cream-100);}
+.section-dark{
+  background:linear-gradient(135deg,var(--green-900),var(--green-950));
+  color:var(--cream-50);
+}
+.section-dark h3{color:var(--cream-50);}
+.section-dark .card-icon{filter:brightness(1.2);}
+
+/* ---------- About ---------- */
+.about-grid{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:56px;
+  align-items:center;
+}
+.about-art{display:flex;justify-content:center;}
+.mystic-svg{width:220px;height:220px;}
+.ring{fill:none;stroke:var(--gold-500);stroke-width:1.5;opacity:.55;}
+.ring-2{stroke:var(--green-800);}
+.star{fill:var(--gold-500);opacity:.85;}
+.eye-center{fill:var(--green-950);}
+.about-text h2{color:var(--green-900);}
+.signature{font-style:italic;color:var(--ink-600);margin-top:1.5rem;}
+
+/* ---------- Grids / cards ---------- */
+.grid{display:grid;gap:28px;}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+
+.card{
+  background:#fff;
+  border:1px solid rgba(27,94,58,.1);
+  border-radius:var(--radius);
+  padding:32px 24px;
+  text-align:center;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft);}
+.section-alt .card{background:#fff;}
+.card-icon{font-size:2rem;margin-bottom:.6rem;}
+.card h3{font-size:1.05rem;color:var(--green-900);}
+.section-dark .card h3{color:var(--cream-50);}
+.card p{color:var(--ink-600);font-size:.95rem;margin:0;}
+.section-dark .card p{color:rgba(250,247,239,.75);}
+
+/* ---------- Atención ---------- */
+.atencion-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+  text-align:center;
+}
+.atencion-item h3{color:var(--cream-50);}
+.atencion-item p{color:rgba(250,247,239,.75);}
+
+/* ---------- Contact ---------- */
+.contact-box{
+  max-width:480px;
+  margin:0 auto;
+  text-align:center;
+  background:var(--cream-100);
+  border:1px solid rgba(27,94,58,.12);
+  border-radius:var(--radius);
+  padding:40px 32px;
+}
+.contact-phone{font-size:1.2rem;color:var(--green-900);}
+.placeholder-tag{
+  display:block;
+  font-size:.75rem;
+  font-weight:700;
+  color:#a15c1a;
+  background:#fdf1df;
+  border:1px dashed #cf9a4c;
+  border-radius:8px;
+  padding:4px 10px;
+  margin-top:8px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer{
+  background:var(--green-950);
+  color:rgba(250,247,239,.7);
+  padding:36px 0;
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.footer-inner .logo-text{color:var(--cream-50);}
+.footer-resp{font-size:.85rem;margin:.4em 0 0;}
+.footer-copy{font-size:.85rem;margin:0;}
+
+/* ---------- Floating WhatsApp ---------- */
+.whatsapp-float{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  width:58px;height:58px;
+  border-radius:50%;
+  background:#25D366;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.6rem;
+  box-shadow:0 10px 24px rgba(0,0,0,.25);
+  z-index:200;
+  transition:transform .15s ease;
+}
+.whatsapp-float:hover{transform:scale(1.08);}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr;text-align:center;}
+  .about-art{order:-1;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .grid-3{grid-template-columns:repeat(2,1fr);}
+  .atencion-grid{grid-template-columns:1fr;}
+}
+
+@media (max-width:760px){
+  .nav{
+    position:fixed;
+    top:70px;
+    left:0;right:0;
+    background:var(--cream-50);
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    padding:0;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .25s ease;
+    border-bottom:1px solid rgba(27,94,58,.12);
+  }
+  .nav.open{max-height:320px;padding:16px 0;}
+  .nav a{padding:12px 0;width:100%;text-align:center;}
+  .header-cta{display:none;}
+  .hamburger{display:flex;}
+  .grid-4,.grid-3{grid-template-columns:1fr;}
+  .hero{padding:100px 0 70px;}
+}
