@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificado de adjudicación | Dramatización</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-950: #10261d;
+      --green-800: #1f5d3b;
+      --gold-500: #b88c1d;
+      --gold-300: #e2c76d;
+      --paper: #fffdf7;
+      --ink: #24241e;
+      --muted: #68665a;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #e8e4d9;
+      color: var(--ink);
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem;
+    }
+    .toolbar-note { margin: 0; font-size: .9rem; color: var(--muted); }
+    .toolbar-actions { display: flex; gap: .75rem; }
+    .toolbar a, .toolbar button {
+      border: 0;
+      border-radius: 999px;
+      padding: .7rem 1rem;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .toolbar a { color: var(--green-950); background: #fff; }
+    .toolbar button { color: #fff; background: var(--green-800); }
+
+    .certificate {
+      position: relative;
+      width: min(210mm, calc(100% - 2rem));
+      min-height: 297mm;
+      margin: 0 auto 2rem;
+      padding: 22mm 20mm 18mm;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 18px 45px rgba(16, 38, 29, .18);
+      text-align: center;
+    }
+    .certificate::before,
+    .certificate::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      border: 1px solid var(--gold-500);
+    }
+    .certificate::before { inset: 10mm; }
+    .certificate::after { inset: 13mm; border-color: rgba(184, 140, 29, .45); }
+
+    .watermark {
+      position: absolute;
+      top: 47%;
+      left: 50%;
+      z-index: 0;
+      width: 115%;
+      height: 34%;
+      overflow: hidden;
+      transform: translate(-50%, -50%) rotate(-28deg);
+      max-width: 760px;
+      opacity: .34;
+    }
+    .watermark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+    }
+    .watermark-fallback {
+      color: #b32b26;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-align: center;
+    }
+    .certificate-content { position: relative; z-index: 1; }
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 68px;
+      height: 68px;
+      margin-bottom: 1rem;
+      border: 2px solid var(--gold-500);
+      border-radius: 50%;
+      color: var(--green-800);
+      font-size: 2rem;
+    }
+    .brand {
+      margin: 0;
+      color: var(--green-950);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 3vw, 1.65rem);
+      letter-spacing: .04em;
+    }
+    .brand-subtitle {
+      margin: .35rem 0 2.5rem;
+      color: var(--gold-500);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0 0 .7rem;
+      color: var(--green-950);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.7rem, 5vw, 2.6rem);
+      letter-spacing: .03em;
+      line-height: 1.2;
+    }
+    .intro, .body-copy {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+    .body-copy { margin-top: 1rem; }
+    .recipient {
+      display: inline-block;
+      margin: 1.5rem 0;
+      padding: .65rem 1.5rem;
+      border-top: 1px solid var(--gold-500);
+      border-bottom: 1px solid var(--gold-500);
+      color: var(--green-800);
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.35rem, 4vw, 2rem);
+      font-weight: 600;
+    }
+    .award {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem auto;
+      padding: 1.3rem;
+      border: 1px solid rgba(184, 140, 29, .55);
+      background: rgba(226, 199, 109, .1);
+    }
+    .award-item { min-width: 150px; }
+    .award-label {
+      display: block;
+      margin-bottom: .35rem;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .award-value { color: var(--green-950); font-size: 1.35rem; font-weight: 700; }
+    .closing { margin-top: 2rem; }
+    .signature {
+      width: 230px;
+      margin: 3.5rem auto 0;
+      padding-top: 0;
+    }
+    .signature-image {
+      display: block;
+      width: 190px;
+      height: 70px;
+      margin: 0 auto;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+    .signature small {
+      display: block;
+      padding-top: .35rem;
+      border-top: 1px solid var(--ink);
+      color: var(--muted);
+    }
+    .footer-logo {
+      display: block;
+      width: min(100%, 520px);
+      height: auto;
+      margin: 3rem auto 0;
+    }
+
+    @media (max-width: 620px) {
+      .toolbar { align-items: flex-start; flex-direction: column; }
+      .certificate { width: calc(100% - 1rem); padding: 18mm 12mm 14mm; }
+      .award { flex-direction: column; gap: 1rem; }
+      .brand-subtitle { margin-bottom: 2rem; }
+    }
+
+    @media print {
+      @page { size: A4 landscape; margin: 0; }
+      body { background: #fff; }
+      .toolbar { display: none; }
+      .certificate {
+        width: 297mm;
+        height: 210mm;
+        min-height: 0;
+        margin: 0;
+        padding: 16mm 18mm 12mm;
+        box-shadow: none;
+      }
+      h1 { font-size: 2.2rem; }
+      .brand-subtitle { margin-bottom: 1rem; }
+      .intro { max-width: 820px; font-size: .9rem; line-height: 1.45; }
+      .recipient { margin: .75rem 0; padding: .4rem 1.2rem; }
+      .award { max-width: 700px; margin: .9rem auto; padding: .75rem 1rem; }
+      .closing { max-width: 760px; margin: .75rem auto 0; font-size: .82rem; line-height: 1.35; }
+      .signature {
+        position: absolute;
+        left: 50%;
+        bottom: 38mm;
+        margin: 0;
+        transform: translateX(-50%);
+      }
+      .certificate-content { position: static; }
+      .footer-logo {
+        position: absolute;
+        left: 50%;
+        bottom: 17mm;
+        width: min(100%, 350px);
+        max-height: 16mm;
+        object-fit: contain;
+        margin: 0;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar" aria-label="Controles del documento">
+    <p class="toolbar-note">Utilería para dramatización audiovisual</p>
+    <div class="toolbar-actions">
+      <a href="index.html">Volver al sitio</a>
+      <a href="liquidacion-dramatizacion.html">Ver liquidación ficticia</a>
+      <button type="button" id="print-button">Exportar a PDF</button>
+    </div>
+  </div>
+
+  <main class="certificate" aria-label="Certificado ficticio de adjudicación">
+    <div class="watermark" aria-hidden="true">
+      <img src="assets/img/marcaDramatizacion.png" alt="DRAMATIZACIÓN - SIN VALIDEZ LEGAL" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;">
+      <span class="watermark-fallback" hidden>DRAMATIZACIÓN</span>
+    </div>
+    <div class="certificate-content">
+      <h1>Certificado de Adjudicación</h1>
+
+      <p class="brand">Botánica Internacional</p>
+      <p class="brand-subtitle">La Espiga de Oro</p>
+
+      <p class="intro">Por medio de la presente, <b>Botánica Internacional Espiga de Oro</b>, identificada con <b>NIT. 900.783.456-3</b>, certifica que la señora <b>CANO QUEVEDO ESPERANZA</b>, identificada con el No. <b>1655764480604</b>, ha sido declarada beneficiaria del premio correspondiente al talonario <b>No. 1052</b>, por valor de <b>$150.000 USD</b>, conforme a las bases, acta de adjudicación y procedimientos oficiales aplicables.</p>
+      <p class="recipient">Sra. Cano Quevedo Esperanza</p>
+
+      <div class="award">
+        <div class="award-item">
+          <span class="award-label">Premio representado</span>
+          <span class="award-value">$150.000 USD</span>
+        </div>
+        <div class="award-item">
+          <span class="award-label">Talonario</span>
+          <span class="award-value">No. 1052</span>
+        </div>
+      </div>
+
+      <p class="closing">La entrega del premio estará sujeta a la verificación de identidad, validación del talonario, cumplimiento de los requisitos legales y las obligaciones tributarias correspondientes.</p>
+
+      <div class="signature">
+        <img class="signature-image" src="assets/img/firmaGerente.png" alt="Firma de utilería del personaje gerente">
+        <small><b>Sebastián Portela Suárez<br>Gerente</b></small>
+      </div>
+
+      <img class="footer-logo" src="assets/img/footer-logos.png" alt="Logos de utilería para dramatización">
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('print-button').addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>

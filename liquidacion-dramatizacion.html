@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquidación ilustrativa | Dramatización</title>
+  <style>
+    :root { --ink: #20251f; --green: #1f5d3b; --gold: #b88c1d; --paper: #fffdf7; --muted: #66675d; --warning: #8b241d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #e8e4d9; color: var(--ink); font-family: Georgia, serif; }
+    .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; max-width: 900px; margin: 0 auto; padding: 1.25rem 1.5rem; font: 700 .9rem Arial, sans-serif; }
+    .toolbar-note { margin: 0; color: var(--warning); }
+    .toolbar-actions { display: flex; gap: .7rem; flex-wrap: wrap; justify-content: flex-end; }
+    .toolbar a, .toolbar button { border: 0; border-radius: 4px; padding: .7rem 1rem; color: #fff; background: var(--green); font: inherit; text-decoration: none; cursor: pointer; }
+    .toolbar a:first-child { color: var(--green); background: #fff; }
+    .document { position: relative; display: flex; flex-direction: column; width: min(210mm, calc(100% - 2rem)); min-height: 297mm; margin: 0 auto 2rem; padding: 18mm 20mm; overflow: hidden; background: var(--paper); box-shadow: 0 18px 45px rgba(16, 38, 29, .18); }
+    .document::before { content: ''; position: absolute; top: 45%; left: 50%; color: rgba(179, 43, 38, .16); font: 700 clamp(1.8rem, 5vw, 4rem) Arial, sans-serif; letter-spacing: .08em; white-space: nowrap; transform: translate(-50%, -50%) rotate(-28deg); }
+    .content { position: relative; z-index: 1; display: flex; flex: 1; flex-direction: column; }
+    .kicker { margin: 0 0 .4rem; color: var(--gold); font: 700 .75rem Arial, sans-serif; letter-spacing: .16em; text-align: center; text-transform: uppercase; }
+    h1 { margin: 0; color: var(--green); font-size: clamp(1.65rem, 4vw, 2.5rem); line-height: 1.15; text-align: center; }
+    .subtitle { margin: .5rem auto 1.5rem; color: var(--muted); text-align: center; }
+    .notice { margin: 1rem 0 1.5rem; padding: .9rem 1rem; border: 2px solid var(--warning); color: var(--warning); font: 700 .85rem/1.45 Arial, sans-serif; text-align: center; }
+    .meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem 2rem; margin: 1.4rem 0; padding: 1rem 0; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+    .meta strong { display: block; color: var(--green); font: 700 .72rem Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .meta span { display: block; margin-top: .25rem; }
+    p { line-height: 1.55; }
+    table { width: 100%; margin: 1.5rem 0; border-collapse: collapse; font-size: .95rem; }
+    th, td { padding: .8rem .6rem; border-bottom: 1px solid #d8d1bc; text-align: left; }
+    th { color: var(--green); font: 700 .75rem Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    td:last-child, th:last-child { text-align: right; white-space: nowrap; }
+    .total td { border-top: 2px solid var(--green); border-bottom: 0; color: var(--green); font-weight: 700; }
+    .legal-note { padding: 1rem; background: #f4f0e5; font-size: .9rem; }
+    .no-payment { margin-top: 1.2rem; padding: 1rem; border: 1px dashed var(--warning); color: var(--warning); font: 700 .9rem/1.5 Arial, sans-serif; }
+    footer { margin-top: auto; padding-top: 1.5rem; color: var(--muted); font: .75rem/1.5 Arial, sans-serif; text-align: center; }
+    @media (max-width: 620px) { .toolbar { align-items: flex-start; flex-direction: column; } .toolbar-actions { justify-content: flex-start; } .document { width: calc(100% - 1rem); padding: 14mm 10mm; } .meta { grid-template-columns: 1fr; } }
+    @media print { @page { size: A4; margin: 10mm 0; } body { background: #fff; } .toolbar { display: none; } .document { width: 210mm; min-height: 0; height: 277mm; margin: 0; padding: 8mm 18mm 0; box-shadow: none; } .content { flex: 1; } footer { padding-top: 1rem; } }
+  </style>
+</head>
+<body>
+  <div class="toolbar" aria-label="Controles del documento">
+    <p class="toolbar-note">Material de utilería para dramatización</p>
+    <div class="toolbar-actions">
+      <a href="certificado-dramatizacion.html">Volver al certificado</a>
+      <button type="button" id="print-button">Exportar a PDF</button>
+    </div>
+  </div>
+
+  <main class="document" aria-label="Liquidación ilustrativa sin validez legal">
+    <div class="content">
+      <h1>Liquidación de Arancel Internacional</h1>
+      <p class="subtitle">No. 9775 | liquidación oficial de pago</p>
+
+      <div class="meta">
+        <div><strong>Referencia</strong><span>Tal. 1052 / 2026</span></div>
+        <div><strong>Beneficiaria</strong><span>Cano Quevedo Esperanza</span></div>
+        <div><strong>Premio representado</strong><span>USD 150.000,00</span></div>
+        <div><strong>Tasa</strong><span>17% del premio</span></div>
+        <div><strong>Entidad representada</strong><span>Botánica Internacional La Espiga de Oro</span></div>
+      </div>
+
+      <p>La presente liquidación oficial corresponde a la aplicación de la retención por concepto de <strong>Ganancia Ocasional / Arancel sobre Premios Obtenidos en el Exterior</strong>, de conformidad con el Estatuto Tributario de Colombia <strong>(Arts. 304, 317 y 404-1)</strong> y las regulaciones cambiarias vigentes de la DIAN. Sobre un valor bruto adjudicado de <strong>USD 150.000,00</strong>, se efectúa la retención en la fuente a la tarifa correspondiente del <strong>17%</strong>, previo al desembolso y monetización de los fondos en la entidad bancaria autorizada.</p>
+
+      <table>
+        <thead><tr><th>Concepto</th><th>Base narrativa</th><th>Importe</th></tr></thead>
+        <tbody>
+          <tr><td>Premio representado</td><td>Base de cálculo</td><td>USD 150.000,00</td></tr>
+          <tr><td>Arancel internacional</td><td>17% de USD 150.000,00</td><td>USD 25.500,00</td></tr>
+          <tr class="total"><td colspan="2">Total representado</td><td>USD 25.500,00</td></tr>
+        </tbody>
+      </table>
+
+      <div class="legal-note"><strong>Nota Institucional:</strong> Esta liquidación constituye el desglose de retenciones y tributos aplicables al ingreso bruto por ganancias en el exterior. Los valores calculados serán reportados a la Dirección de Impuestos y Aduanas Nacionales (DIAN) bajo la modalidad de retención en la fuente por pagos al exterior o ganancias ocasionales. Para la liberación total de los fondos, el beneficiario deberá presentar la certificación de pago emitida por el agente de retención competente.</div>
+      <div class="no-payment"><strong>Instrucciones para la Monetización:</strong> De acuerdo con el Régimen Cambiario del Banco de la República (Circular Reglamentaria Externa DODM-144), la transferencia internacional queda sujeta a la debida justificación del origen de los fondos y al diligenciamiento de la Declaración de Cambio por Servicios, Transferencias y Otros Conceptos (Formulario No. 5). Asegúrese de realizar el trámite a través de un Intermediario del Mercado Cambiario (IMC) debidamente vigilado por la Superintendencia Financiera de Colombia.</div>
+
+      <footer>Documento expedido para fines de liquidación tributaria, comprobación de origen de fondos y trámite impositivo.<br>DOCUMENTO OFICIAL DE LIQUIDACIÓN DE RETENCIONES Y ARANCELES</footer>
+    </div>
+  </main>
+  <script>document.getElementById('print-button').addEventListener('click', () => window.print());</script>
+</body>
+</html>

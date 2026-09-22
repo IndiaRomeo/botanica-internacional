@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario F-04 | Dramatización</title>
+  <style>
+    :root { --green-950:#10261d; --green-800:#1f5d3b; --gold-500:#b88c1d; --paper:#fffdf7; --ink:#24241e; --muted:#68665a; --warning:#8b241d; --line:#d8d1bc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #e8e4d9; color: var(--ink); font-family: Arial, sans-serif; }
+    .toolbar { display:flex; justify-content:space-between; align-items:center; gap:1rem; max-width:900px; margin:0 auto; padding:1.25rem 1.5rem; }
+    .toolbar-note { margin:0; color:var(--warning); font-size:.9rem; font-weight:700; }
+    .toolbar-actions { display:flex; gap:.7rem; flex-wrap:wrap; }
+    .toolbar a, .toolbar button { border:0; border-radius:4px; padding:.7rem 1rem; color:#fff; background:var(--green-800); font:inherit; font-weight:700; text-decoration:none; cursor:pointer; }
+    .toolbar a:first-child { color:var(--green-950); background:#fff; }
+    .document { width:min(210mm, calc(100% - 2rem)); min-height:297mm; margin:0 auto 2rem; padding:18mm 20mm; background:var(--paper); box-shadow:0 18px 45px rgba(16,38,29,.18); }
+    .document-header { padding-bottom:1.2rem; border-bottom:2px solid var(--green-800); text-align:center; }
+    .kicker { margin:0 0 .4rem; color:var(--gold-500); font-size:.75rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { margin:0; color:var(--green-950); font-size:clamp(1.6rem, 4vw, 2.4rem); }
+    .subtitle { margin:.5rem 0 0; color:var(--muted); }
+    .notice { margin:1.4rem 0; padding:.9rem 1rem; border:2px solid var(--warning); color:var(--warning); font-size:.88rem; font-weight:700; line-height:1.5; text-align:center; }
+    .form-intro { color:var(--muted); line-height:1.55; }
+    form { margin-top:1.5rem; }
+    .field-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem 1.3rem; }
+    .field { display:flex; flex-direction:column; gap:.35rem; }
+    .field-wide { grid-column:1 / -1; }
+    label { color:var(--green-950); font-size:.78rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+    input, select, textarea { width:100%; min-height:2.8rem; padding:.7rem .75rem; border:1px solid var(--line); border-radius:3px; color:var(--ink); background:#fff; font:inherit; }
+    textarea { min-height:5rem; resize:vertical; }
+    input:focus, select:focus, textarea:focus { outline:2px solid rgba(184,140,29,.45); border-color:var(--gold-500); }
+    .helper { margin:0; color:var(--muted); font-size:.78rem; }
+    .form-footer { margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--line); }
+    .consent { display:flex; flex-direction:row; align-items:flex-start; gap:.6rem; font-size:.85rem; font-weight:400; letter-spacing:0; text-transform:none; }
+    .consent input { width:1rem; min-height:1rem; margin-top:.2rem; }
+    .signature-line { width:55%; margin-top:3.5rem; padding-top:.45rem; border-top:1px solid var(--ink); color:var(--muted); font-size:.8rem; }
+    .document-footer { margin-top:3rem; color:var(--muted); font-size:.75rem; line-height:1.5; text-align:center; }
+    @media (max-width:620px) { .toolbar { align-items:flex-start; flex-direction:column; } .toolbar-actions { justify-content:flex-start; } .document { width:calc(100% - 1rem); padding:14mm 10mm; } .field-grid { grid-template-columns:1fr; } .field-wide { grid-column:auto; } .signature-line { width:100%; } }
+    @media print { @page { size:A4; margin:0; } body { background:#fff; } .toolbar { display:none; } .document { width:210mm; min-height:297mm; margin:0; padding:16mm 18mm; box-shadow:none; } }
+  </style>
+</head>
+<body>
+  <div class="toolbar" aria-label="Controles del documento">
+    <p class="toolbar-note">Material de utilería para dramatización</p>
+    <div class="toolbar-actions">
+      <a href="index.html">Volver al sitio</a>
+      <a href="certificado-dramatizacion.html">Ver certificado</a>
+      <button type="button" id="print-button">Exportar a PDF</button>
+    </div>
+  </div>
+
+  <main class="document" aria-label="Formulario F-04 ficticio de registro de datos bancarios">
+    <header class="document-header">
+      <p class="kicker">Botánica Internacional La Espiga de Oro</p>
+      <h1>Formulario F-04</h1>
+      <p class="subtitle">Registro de Datos Bancarios de Destino</p>
+    </header>
+
+    <p class="form-intro">Complete los datos del beneficiario para representar el registro de una cuenta de destino en Estados Unidos.</p>
+
+    <form onsubmit="return false;">
+      <div class="field-grid">
+        <div class="field field-wide">
+          <label for="bank-name">Nombre del banco en Estados Unidos</label>
+          <input id="bank-name" name="bank-name" type="text" autocomplete="off" placeholder="Ej.: Bank of America">
+        </div>
+        <div class="field">
+          <label for="account-type">Tipo de cuenta</label>
+          <select id="account-type" name="account-type"><option value="">Seleccione una opción</option><option>Checking</option><option>Savings</option></select>
+        </div>
+        <div class="field">
+          <label for="account-number">Número de cuenta</label>
+          <input id="account-number" name="account-number" type="text" inputmode="numeric" autocomplete="off" placeholder="XXXX-XXXX-XXXX">
+        </div>
+        <div class="field">
+          <label for="routing-number">ABA Routing Number</label>
+          <input id="routing-number" name="routing-number" type="text" inputmode="numeric" maxlength="9" autocomplete="off" placeholder="9 dígitos">
+          <p class="helper">Número de ruta bancaria estadounidense.</p>
+        </div>
+        <div class="field">
+          <label for="swift-code">Código SWIFT / BIC</label>
+          <input id="swift-code" name="swift-code" type="text" autocomplete="off" placeholder="Ej.: ABCDUS00XXX">
+        </div>
+        <div class="field field-wide">
+          <label for="bank-address">Dirección del banco</label>
+          <textarea id="bank-address" name="bank-address" autocomplete="off" placeholder="Calle, ciudad, estado y código postal"></textarea>
+        </div>
+      </div>
+      <div class="form-footer">
+        <div class="signature-line">Firma de la persona beneficiaria</div>
+      </div>
+    </form>
+  </main>
+
+  <script>document.getElementById('print-button').addEventListener('click', () => window.print());</script>
+</body>
+</html>

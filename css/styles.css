@@ -89,6 +89,15 @@ p{margin:0 0 1em;}
   font-size:.9rem;
 }
 .btn-lg{padding:1em 2.2em;font-size:1.05rem;}
+.ticket-doc-link{
+  display:block;
+  margin-top:1rem;
+  color:var(--green-800);
+  font-size:.85rem;
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
 
 /* ---------- Header ---------- */
 .site-header{
